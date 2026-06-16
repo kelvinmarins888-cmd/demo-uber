@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo App de Corridas</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f4f4f4;margin:0;padding:20px}
+.container{max-width:400px;margin:auto;background:white;padding:20px;border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,.1)}
+h2{text-align:center}
+input,button{width:100%;padding:12px;margin-top:10px;border-radius:8px;border:1px solid #ccc;box-sizing:border-box}
+button{background:#000;color:white;cursor:pointer;border:none}
+.resultado{margin-top:20px;padding:15px;background:#eaf7ea;border-radius:8px;display:none}
+</style>
+</head>
+<body>
+<div class="container">
+<h2>Solicitar Corrida</h2>
+<input type="text" id="nome" placeholder="Seu nome">
+<input type="text" id="origem" placeholder="Local de embarque">
+<input type="text" id="destino" placeholder="Destino">
+<button onclick="solicitarCorrida()">Chamar Motorista</button>
+<div class="resultado" id="resultado"></div>
+</div>
+<script>
+function solicitarCorrida(){
+ const nome=document.getElementById('nome').value;
+ const origem=document.getElementById('origem').value;
+ const destino=document.getElementById('destino').value;
+ if(!nome||!origem||!destino){alert('Preencha todos os campos.');return;}
+ const protocolo=Math.floor(Math.random()*100000);
+ document.getElementById('resultado').style.display='block';
+ document.getElementById('resultado').innerHTML=`
+ <strong>Corrida solicitada!</strong><br><br>
+ Cliente: ${nome}<br>
+ Origem: ${origem}<br>
+ Destino: ${destino}<br>
+ Protocolo: #${protocolo}<br><br>
+ Motorista será atribuído em instantes.`;
+}
+</script>
+</body>
+</html>
